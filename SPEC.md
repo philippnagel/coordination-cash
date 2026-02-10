@@ -127,11 +127,11 @@ Set all θ = 1.0 for electricity-only view. Theta values are **only adjustable**
 C_platform    = 75 × 800,000                                =  60,000,000 €
 C_operations  = (100×400,000 + 400×100,000 + 1,700×25,000) 
               + (400,000,000 × 0.01)                         = 126,500,000 €
-C_sync_tax    = 1.5 × (75×250,000 
-              + 100×50,000 + 400×15,000 + 1,700×5,000)       =  55,125,000 €
+C_sync_tax    = 1.5 × (75×250,000
+              + 100×50,000 + 400×15,000 + 1,700×5,000)       =  57,375,000 €
 C_friction    = 400,000,000 × 0.001 × 150                   =  60,000,000 €
 ─────────────────────────────────────────────────────────────────────────
-TOTAL (Strom only)                                          ≈ 302,000,000 €/year
+TOTAL (Strom only)                                          ≈ 304,000,000 €/year
 ```
 
 #### Combined Strom + Gas — With Sector Multipliers
@@ -139,23 +139,23 @@ TOTAL (Strom only)                                          ≈ 302,000,000 €/
 ```
 C_platform    =  60,000,000 € × 1.10                        =  66,000,000 €
 C_operations  = 126,500,000 € × 1.25                        = 158,125,000 €
-C_sync_tax    =  55,125,000 € × 1.30                        =  71,662,500 €
+C_sync_tax    =  57,375,000 € × 1.30                        =  74,587,500 €
 C_friction    =  60,000,000 € × 1.40                        =  84,000,000 €
 ─────────────────────────────────────────────────────────────────────────
-TOTAL (Strom + Gas)                                         ≈ 380,000,000 €/year
+TOTAL (Strom + Gas)                                         ≈ 383,000,000 €/year
 ```
 
 ### Derived Metrics
 
 | Metric | Formula | Strom Only | Strom + Gas |
 |--------|---------|------------|-------------|
-| Cost per Zählpunkt | `C_national / ZP` | ~5.81 €/year | ~5.28 €/year |
-| Cost per household | `C_national / 42M` | ~7.19 €/year | ~9.05 €/year |
-| Cost per message | `C_national / V` | ~0.76 € | ~0.69 € |
-| Cost per participant | `C_national / P` | ~137,300 €/year | ~152,000 €/year |
-| Implied national FTEs | `C_national / 100k` | ~3,020 FTE | ~3,800 FTE |
+| Cost per Zählpunkt | `C_national / ZP` | ~5.84 €/year | ~5.32 €/year |
+| Cost per household | `C_national / 42M` | ~7.24 €/year | ~9.11 €/year |
+| Cost per message | `C_national / V` | ~0.76 € | ~0.70 € |
+| Cost per participant | `C_national / P` | ~138,100 €/year | ~153,100 €/year |
+| Implied national FTEs | `C_national / 100k` | ~3,039 FTE | ~3,827 FTE |
 | Effective impl. (top-5 weighted) | `κ × P / 5` | ~264 participants/vendor | — |
-| Long-tail impl. cost share | `(1-κ) × I × C_impl` | ~33.6M € | — |
+| Long-tail impl. cost share | `(1-κ) × I × C_impl` | 24M € | — |
 
 The **long-tail implementation cost share** highlights how much the market spends maintaining the ~70 smaller implementations that collectively serve only ~40% of participants — a key input to the Consolidation scenario.
 
@@ -207,7 +207,7 @@ The **long-tail implementation cost share** highlights how much the market spend
 │   Small: 5k€/update — vendor-managed, verification only          │
 │                                                                  │
 │   Cost driver: U × (I×C_update_impl + Σ(P_tier×C_update_tier))  │
-│                × θ_update                          ≈ 72M€/year   │
+│                × θ_update                          ≈ 75M€/year   │
 └─────────────────────────────────────────────────────────────────┘
                               ↓ generates
 ┌─────────────────────────────────────────────────────────────────┐
@@ -235,17 +235,17 @@ The **long-tail implementation cost share** highlights how much the market spend
 │                                                                      │
 │  ┌────────────────────────────────────────────────────────────────┐  │
 │  │                                                                │  │
-│  │                    TOTAL: €380 Million/year                    │  │
+│  │                    TOTAL: €383 Million/year                    │  │
 │  │                                                                │  │
 │  │         ████████████████░░░░░░░░  Platform      66M€ (17%)    │  │
-│  │         ████████████████████████████████████░  Ops  158M€ (42%)│  │
-│  │         ██████████████████░░░░░░░  Sync Tax     72M€ (19%)    │  │
+│  │         ████████████████████████████████████░  Ops  158M€ (41%)│  │
+│  │         ██████████████████░░░░░░░  Sync Tax     75M€ (19%)    │  │
 │  │         ██████████████████░░░░░░░░░░░  Friction  84M€ (22%)   │  │
 │  │                                                                │  │
 │  └────────────────────────────────────────────────────────────────┘  │
 │                                                                      │
 │  ┌─────────────────────┐  ┌─────────────────────┐                    │
-│  │ €5.28 / Zählpunkt   │  │ €9.05 / Household   │                    │
+│  │ €5.32 / Zählpunkt   │  │ €9.11 / Household   │                    │
 │  │ per year            │  │ per year            │                    │
 │  └─────────────────────┘  └─────────────────────┘                    │
 │                                                                      │
@@ -284,7 +284,7 @@ The **long-tail implementation cost share** highlights how much the market spend
 │  ┌────────────┐ ┌────────────┐ ┌────────────┐ ┌────────────┐        │
 │  │  Current   │ │ Consolid.  │ │ API Future │ │ MaKo Pause │        │
 │  │   State    │ │(I=30,κ=.8) │ │  (-70% ε)  │ │  (U=0.5)   │        │
-│  │   380M€    │ │   344M€    │ │   322M€    │ │   332M€    │        │
+│  │   383M€    │ │   321M€    │ │   324M€    │ │   333M€    │        │
 │  └────────────┘ └────────────┘ └────────────┘ └────────────┘        │
 │                                                                      │
 ├──────────────────────────────────────────────────────────────────────┤
@@ -603,6 +603,13 @@ Before launch, calibrate defaults via:
 
 ## Changelog
 
+### v0.2.1 — 2026-02-10
+- Fixed sync tax arithmetic: 55.1M → 57.4M (inner sum was 38.25M, not 36.75M)
+- Fixed long-tail cost share: 33.6M → 24M (correct: 0.4 × 75 × 800k)
+- Corrected all totals: Strom ~304M (was ~302M), Strom+Gas ~383M (was ~380M)
+- Corrected scenario figures: Consolidation 321M (was 344M), API Future 324M (was 322M), MaKo Pause 333M (was 332M)
+- Updated all derived metrics and architecture diagram annotations to match
+
 ### v0.2 — 2026-02-10
 - Added explicit `scope` field replacing fragile `θ.operations > 1.0` heuristic for gas detection
 - Tiered sync tax update costs by participant size (large/medium/small) replacing flat per-participant rate
@@ -619,5 +626,5 @@ Before launch, calibrate defaults via:
 
 ---
 
-*Version: 0.2 — Refined*
+*Version: 0.2.1 — Arithmetic corrections*
 *Last updated: 2026-02-10*

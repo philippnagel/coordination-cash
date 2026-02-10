@@ -545,7 +545,42 @@ Display prominently:
 
 ---
 
-## Future Extensions
+## Implementation Checklist
+
+### v1 — MVP (Calculator)
+- [x] Core model engine (calculateModel pure function)
+- [x] Scope toggle (Strom / Strom+Gas) with θ auto-switching
+- [x] Cost display: total + stacked bar + component breakdown
+- [x] Derived metrics cards (per ZP, per household, FTEs, etc.)
+- [x] Parameter sliders grouped by category, with collapsible sections
+- [x] Logarithmic scale for large-range sliders (V, ε)
+- [x] θ sliders disabled when scope = strom
+- [x] Reset all parameters button
+- [x] Scenario comparison (Consolidation, API Future, MaKo Pause)
+- [x] URL state encoding (base64 JSON, shareable links)
+- [x] Content pages: Methodology, Data Sources, About (German)
+- [x] Responsive layout with sticky header navigation
+- [ ] Share button (copy URL to clipboard) — _Layout has icon but needs user feedback (toast)_
+- [ ] Input validation: clamp URL-decoded values to parameter ranges
+- [ ] `[?]` tooltips on parameter labels explaining each variable
+- [ ] `[i]` info button in header linking to Methodology page
+
+### v1.1 — Polish
+- [ ] Export PDF (print stylesheet or html2canvas)
+- [ ] Custom scenario saving (localStorage)
+- [ ] Smooth animated transitions on value changes
+- [ ] Social meta tags (Open Graph) for link previews
+- [ ] German number formatting in slider inputs (dots as thousands separator)
+
+### v1.2 — Advanced Analytics
+- [ ] Sensitivity analysis: tornado chart showing parameter impact ranking
+- [ ] Monte Carlo simulation with uncertainty ranges
+- [ ] API / JSON endpoint for programmatic access
+
+### Model Design Issues (to resolve)
+- [ ] κ (concentration) has no effect on headline cost — only derived metrics. Either document this clearly or make κ mechanically reduce effective I in the cost equation
+- [ ] P (total participants) is redundant — formulas only use P_large + P_medium + P_small. Remove P as a standalone variable or derive it as a read-only sum
+- [ ] θ_friction = 1.4 but actual volume ratio is 550/400 = 1.375 — document the 2.5% gap or adjust θ default
 
 ### Phase 2
 - [ ] Time series: model cost evolution 2015-2030

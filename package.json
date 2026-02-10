@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "bun run --hot src/server.ts",
-    "build": "bun build src/index.tsx --outdir dist --minify && bunx @tailwindcss/cli -i src/styles.css -o dist/styles.css --minify",
+    "build": "rm -rf dist && mkdir -p dist && cp -r public/* dist/ && bun build src/index.tsx --outdir dist --minify && bunx @tailwindcss/cli -i src/styles.css -o dist/styles.css --minify"
     "css": "bunx @tailwindcss/cli -i src/styles.css -o public/styles.css --watch"
   },
   "devDependencies": {

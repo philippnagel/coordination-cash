@@ -1,27 +1,29 @@
 {
-  "name": "coordination-cash",
-  "module": "src/index.tsx",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "dev": "bun run --hot src/server.ts",
-    "build": "rm -rf dist && mkdir -p dist && cp -r public/* dist/ && bun build src/index.tsx --outdir dist --minify && bunx @tailwindcss/cli -i src/styles.css -o dist/styles.css --minify",
-    "css": "bunx @tailwindcss/cli -i src/styles.css -o public/styles.css --watch"
-  },
-  "devDependencies": {
-    "@tailwindcss/cli": "^4.1.18",
-    "@types/bun": "latest",
-    "@types/react": "^19.2.13",
-    "@types/react-dom": "^19.2.3",
-    "tailwindcss": "^4.1.18"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
-  "dependencies": {
-    "lucide-react": "^0.563.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "recharts": "^3.7.0"
-  }
+	"name": "coordination-cash",
+	"module": "src/index.tsx",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"dev": "bun run --hot src/server.ts",
+		"build": "rm -rf dist && mkdir -p dist && cp -r public/* dist/ && bun build src/index.tsx --outdir dist --minify && bunx @tailwindcss/cli -i src/styles.css -o dist/styles.css --minify",
+		"css": "bunx @tailwindcss/cli -i src/styles.css -o public/styles.css --watch",
+		"lint": "bunx biome check --write"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.3.14",
+		"@tailwindcss/cli": "^4.1.18",
+		"@types/bun": "latest",
+		"@types/react": "^19.2.13",
+		"@types/react-dom": "^19.2.3",
+		"tailwindcss": "^4.1.18"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"lucide-react": "^0.563.0",
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4",
+		"recharts": "^3.7.0"
+	}
 }

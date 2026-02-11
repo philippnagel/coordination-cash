@@ -1,5 +1,5 @@
-import { Share2 } from "lucide-react";
-import type { ReactNode } from "react";
+import { Check, Printer, Share2 } from "lucide-react";
+import { type ReactNode, useState } from "react";
 
 type Page = "calculator" | "methodology" | "data" | "about";
 
@@ -17,8 +17,12 @@ interface LayoutProps {
 }
 
 export function Layout({ currentPage, onNavigate, children }: LayoutProps) {
+	const [copied, setCopied] = useState(false);
+
 	const handleShare = () => {
 		navigator.clipboard.writeText(window.location.href);
+		setCopied(true);
+		setTimeout(() => setCopied(false), 2000);
 	};
 
 	return (
@@ -47,13 +51,32 @@ export function Layout({ currentPage, onNavigate, children }: LayoutProps) {
 								{item.label}
 							</button>
 						))}
+						<div className="relative ml-2">
+							<button
+								type="button"
+								onClick={handleShare}
+								className={`p-1.5 transition-colors ${
+									copied
+										? "text-emerald-500"
+										: "text-gray-400 hover:text-blue-600"
+								}`}
+								title="Link kopieren"
+							>
+								{copied ? <Check size={16} /> : <Share2 size={16} />}
+							</button>
+							{copied && (
+								<span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-emerald-600 whitespace-nowrap">
+									Kopiert!
+								</span>
+							)}
+						</div>
 						<button
 							type="button"
-							onClick={handleShare}
-							className="ml-2 p-1.5 text-gray-400 hover:text-blue-600 transition-colors"
-							title="Link kopieren"
+							onClick={() => window.print()}
+							className="p-1.5 text-gray-400 hover:text-blue-600 transition-colors"
+							title="Drucken / Exportieren"
 						>
-							<Share2 size={16} />
+							<Printer size={16} />
 						</button>
 					</nav>
 					{/* Mobile nav */}

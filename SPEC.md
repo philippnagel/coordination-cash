@@ -567,13 +567,13 @@ Display prominently:
 - [x] URL state encoding (base64 JSON, shareable links)
 - [x] Content pages: Methodology, Data Sources, About (German)
 - [x] Responsive layout with sticky header navigation
-- [ ] Share button (copy URL to clipboard) — _Layout has icon but needs user feedback (toast)_
+- [x] Share button (copy URL to clipboard) — _Layout has icon but needs user feedback (toast)_
 - [ ] Input validation: clamp URL-decoded values to parameter ranges
 - [ ] `[?]` tooltips on parameter labels explaining each variable
 - [ ] `[i]` info button in header linking to Methodology page
 
 ### v1.1 — Polish
-- [ ] Export PDF (print stylesheet or html2canvas)
+- [x] Export PDF (print stylesheet or html2canvas)
 - [ ] Custom scenario saving (localStorage)
 - [ ] Smooth animated transitions on value changes
 - [ ] Social meta tags (Open Graph) for link previews

@@ -8,9 +8,17 @@ import { ScopeSelector } from "./components/ScopeSelector.tsx";
 import { calculateModel } from "./model/calculate.ts";
 import {
 	DEFAULT_INPUTS,
+	SCENARIOS,
+	type Scenario,
 	STROM_ONLY_MULTIPLIERS,
 	STROM_PLUS_GAS_MULTIPLIERS,
 } from "./model/defaults.ts";
+
+// Collect all keys that any scenario can override
+const SCENARIO_KEYS = [
+	...new Set(SCENARIOS.flatMap((s) => Object.keys(s.overrides))),
+];
+
 import type { ModelInputs, Scope } from "./model/types.ts";
 import { getInitialInputs, pushConfigToUrl } from "./model/url-state.ts";
 import { About } from "./pages/About.tsx";
@@ -76,6 +84,26 @@ export function App() {
 		[updateInputs],
 	);
 
+	const applyScenario = useCallback(
+		(overrides: Scenario["overrides"], isActive: boolean) => {
+			updateInputs((prev) => {
+				const next = structuredClone(prev);
+				// First reset all scenario-affected keys to defaults
+				for (const key of SCENARIO_KEYS) {
+					(next as Record<string, unknown>)[key] = (
+						DEFAULT_INPUTS as Record<string, unknown>
+					)[key];
+				}
+				// Then apply new scenario (unless toggling off)
+				if (!isActive) {
+					Object.assign(next, overrides);
+				}
+				return next;
+			});
+		},
+		[updateInputs],
+	);
+
 	return (
 		<Layout currentPage={page} onNavigate={setPage}>
 			{page === "calculator" && (
@@ -88,7 +116,11 @@ export function App() {
 						onChangeValue={setNestedValue}
 						onReset={resetAll}
 					/>
-					<ScenarioComparison inputs={inputs} outputs={outputs} />
+					<ScenarioComparison
+						inputs={inputs}
+						outputs={outputs}
+						onApplyScenario={applyScenario}
+					/>
 				</div>
 			)}
 			{page === "methodology" && <Methodology />}

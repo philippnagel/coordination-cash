@@ -10,7 +10,7 @@ export function decodeConfig(encoded: string): ModelInputs {
 		const parsed = JSON.parse(atob(encoded));
 		return mergeDefaults(parsed);
 	} catch {
-		return { ...DEFAULT_INPUTS };
+		return structuredClone(DEFAULT_INPUTS);
 	}
 }
 
@@ -69,7 +69,7 @@ export function getInitialInputs(): ModelInputs {
 	if (config) {
 		return decodeConfig(config);
 	}
-	return { ...DEFAULT_INPUTS };
+	return structuredClone(DEFAULT_INPUTS);
 }
 
 export function pushConfigToUrl(inputs: ModelInputs) {

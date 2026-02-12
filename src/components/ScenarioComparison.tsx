@@ -1,11 +1,10 @@
 import { calculateModel } from "../model/calculate.ts";
 import type { Scenario } from "../model/defaults.ts";
-import { SCENARIOS } from "../model/defaults.ts";
+import { DEFAULT_INPUTS, SCENARIOS } from "../model/defaults.ts";
 import type { ModelInputs, ModelOutputs } from "../model/types.ts";
 import { formatEuro, formatEuroCompact } from "../utils/format.ts";
 
 interface ScenarioComparisonProps {
-	inputs: ModelInputs;
 	outputs: ModelOutputs;
 	onApplyScenario: (
 		overrides: Scenario["overrides"],
@@ -14,19 +13,20 @@ interface ScenarioComparisonProps {
 }
 
 export function ScenarioComparison({
-	inputs,
 	outputs,
 	onApplyScenario,
 }: ScenarioComparisonProps) {
 	const currentTotal = outputs.total;
+	const defaultTotal = calculateModel(DEFAULT_INPUTS).total;
 
 	const scenarioResults = SCENARIOS.map((scenario) => {
+		// Always calculate from defaults so scenario totals and deltas stay stable
 		const merged: ModelInputs = {
-			...structuredClone(inputs),
+			...structuredClone(DEFAULT_INPUTS),
 			...scenario.overrides,
 		};
 		const result = calculateModel(merged);
-		const delta = result.total - currentTotal;
+		const delta = result.total - defaultTotal;
 		return { ...scenario, result, delta };
 	});
 
@@ -35,7 +35,7 @@ export function ScenarioComparison({
 			<h2 className="text-base font-semibold text-gray-900 mb-4">Szenarien</h2>
 			<div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
 				{scenarioResults.map((s) => {
-					const isActive = s.delta === 0;
+					const isActive = s.result.total === currentTotal;
 					return (
 						<button
 							type="button"
@@ -63,7 +63,7 @@ export function ScenarioComparison({
 									}`}
 								>
 									{s.delta < 0 ? "" : "+"}
-									{formatEuro(s.delta)} vs. aktuell
+									{formatEuro(s.delta)} vs. Standard
 								</p>
 							)}
 						</button>

@@ -5,6 +5,7 @@ import { Layout } from "./components/Layout.tsx";
 import { ParameterSliders } from "./components/ParameterSliders.tsx";
 import { ScenarioComparison } from "./components/ScenarioComparison.tsx";
 import { ScopeSelector } from "./components/ScopeSelector.tsx";
+import { SensitivityAnalysis } from "./components/SensitivityAnalysis.tsx";
 import { calculateModel } from "./model/calculate.ts";
 import {
 	DEFAULT_INPUTS,
@@ -110,6 +111,7 @@ export function App() {
 						outputs={outputs}
 						onApplyScenario={applyScenario}
 					/>
+					<SensitivityAnalysis inputs={inputs} />
 				</div>
 			)}
 			{page === "methodology" && <Methodology />}

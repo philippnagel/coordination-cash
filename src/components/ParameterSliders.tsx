@@ -20,7 +20,7 @@ const MARKET_STRUCTURE: ParamDef[] = [
 	{ key: "participants.large", label: "Große Teilnehmer (>100k ZP)" },
 	{ key: "participants.medium", label: "Mittlere Teilnehmer (10k-100k ZP)" },
 	{ key: "participants.small", label: "Kleine Teilnehmer (<10k ZP)" },
-	{ key: "messageVolume", label: "Nachrichtenvolumen / Jahr (V)" },
+	{ key: "messageVolume", label: "Transaktionen / Jahr (V)" },
 	{ key: "updatesPerYear", label: "Updates pro Jahr (U)" },
 	{ key: "errorRate", label: "Fehlerrate (ε)" },
 	{ key: "concentration", label: "Top-5 Konzentration (κ)" },
@@ -31,7 +31,7 @@ const UNIT_COSTS: ParamDef[] = [
 	{ key: "costs.opsLarge", label: "Betrieb Groß (C_ops_large)" },
 	{ key: "costs.opsMedium", label: "Betrieb Mittel (C_ops_medium)" },
 	{ key: "costs.opsSmall", label: "Betrieb Klein (C_ops_small)" },
-	{ key: "costs.perMessage", label: "Pro Nachricht (C_msg)" },
+	{ key: "costs.perMessage", label: "Pro Transaktion (C_msg)" },
 	{ key: "costs.frictionResolution", label: "Klärfall-Kosten (C_resolve)" },
 ];
 

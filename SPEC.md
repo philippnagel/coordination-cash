@@ -580,7 +580,7 @@ Display prominently:
 - [ ] `[i]` info button in header linking to Methodology page
 
 ### v1.2 — Advanced Analytics
-- [ ] Sensitivity analysis: tornado chart showing parameter impact ranking
+- [x] Sensitivity analysis: tornado chart showing parameter impact ranking
 - [ ] Monte Carlo simulation with uncertainty ranges
 - [ ] API / JSON endpoint for programmatic access that works with the current static page
 

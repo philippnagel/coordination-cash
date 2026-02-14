@@ -9,8 +9,8 @@ export function Methodology() {
 				<strong>verpflichtende Koordinationsinfrastruktur</strong>: ca. 2.500
 				Marktteilnehmer implementieren dieselbe Spezifikation, synchronisieren
 				sich bei regulatorischen Updates und tauschen jährlich über 550 Mio.
-				Nachrichten aus. Die damit verbundenen Kosten sind auf Einzelunternehmen
-				verteilt und national weitgehend unsichtbar.
+				Transaktionen aus. Die damit verbundenen Kosten sind auf
+				Einzelunternehmen verteilt und national weitgehend unsichtbar.
 			</p>
 			<p>
 				Dieses Modell macht die aggregierten Kosten sichtbar und ermöglicht den
@@ -41,7 +41,7 @@ export function Methodology() {
 				<code>Σ(P_tier × C_ops_tier) + V × C_msg</code> — Die laufenden
 				Betriebskosten aller Marktteilnehmer, gestaffelt nach Größe.{" "}
 				<code>C_msg</code> erfasst nur die <strong>marginalen</strong> Kosten
-				pro Nachricht (Routing, Speicherung, Bandbreite). Die festen
+				pro Transaktion (Routing, Speicherung, Bandbreite). Die festen
 				Infrastrukturkosten sind bereits in den Betriebskosten enthalten.
 			</p>
 
@@ -56,7 +56,7 @@ export function Methodology() {
 			<h3>C_friction — Reibungskosten</h3>
 			<p>
 				<code>V × ε × C_resolve</code> — Fehlerbehandlung, Clearingfälle und
-				Streitigkeiten. Bei 550 Mio. Nachrichten und 0,1% Fehlerrate entstehen
+				Streitigkeiten. Bei 550 Mio. Transaktionen und 0,1% Fehlerrate entstehen
 				ca. 550.000 Klärfälle pro Jahr.
 			</p>
 
@@ -79,7 +79,7 @@ export function Methodology() {
 					erhöhen aber die Komplexität
 				</li>
 				<li>
-					<strong>θ_friction = 1,4</strong> — Ca. 40% mehr Nachrichten →
+					<strong>θ_friction = 1,4</strong> — Ca. 40% mehr Transaktionen →
 					proportionale Reibung
 				</li>
 			</ul>

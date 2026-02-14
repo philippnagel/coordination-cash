@@ -70,7 +70,7 @@ export function DataSources() {
 						<td>BNetzA + MaStR Registrierungen</td>
 					</tr>
 					<tr>
-						<td>Nachrichtenvolumen (V=400/550M)</td>
+						<td>Transaktionsvolumen (V=400/550M)</td>
 						<td>edi@energy Statistiken, BNetzA Monitoring</td>
 					</tr>
 					<tr>
@@ -90,7 +90,7 @@ export function DataSources() {
 					3-5 anonyme Stadtwerke-Datenpunkte zur Validierung der Stückkosten
 				</li>
 				<li>Vendor-Abgleich zur Bestätigung der Implementierungszahl</li>
-				<li>Nachrichtenvolumen-Triangulation mit BNetzA-Berichten</li>
+				<li>Transaktionsvolumen-Triangulation mit BNetzA-Berichten</li>
 				<li>Transparenz als Glaubwürdigkeitsmechanismus</li>
 			</ol>
 		</div>

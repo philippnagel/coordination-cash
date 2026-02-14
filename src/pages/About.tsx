@@ -9,8 +9,7 @@ export function About() {
 				<strong>verpflichtende Koordinationsinfrastruktur</strong>. Etwa 2.500
 				Marktteilnehmer in der Strom- und Gaswirtschaft müssen dieselbe
 				Spezifikation implementieren, sich bei regulatorischen Updates
-				synchronisieren und hunderte Millionen standardisierter Nachrichten
-				austauschen.
+				synchronisieren und hunderte Millionen Transaktionen austauschen.
 			</p>
 			<p>
 				Die Kosten dieses Systems sind real, aber verteilt und unsichtbar.

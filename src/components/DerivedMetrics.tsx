@@ -22,7 +22,7 @@ export function DerivedMetrics({ derived, scope }: DerivedMetricsProps) {
 			sub: "42 Mio. Haushalte",
 		},
 		{
-			label: "pro Nachricht",
+			label: "pro Transaktion",
 			value: formatEuro(derived.perMessage),
 		},
 		{

@@ -6,6 +6,7 @@ out
 dist
 public/index.js
 public/styles.css
+src/public/
 *.tgz
 
 # code coverage

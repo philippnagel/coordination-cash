@@ -17,6 +17,10 @@ bun run lint     # Uses biome to format, lint, and organize imports of all files
 
 Use bun.js testing for tests.
 
+## Browser Testing
+
+Playwright MCP is configured in `.mcp.json` for interactive browser testing. Start the dev server with `bun run dev`, then use the Playwright tools to navigate, click, fill forms, and take screenshots at `http://localhost:3000`.
+
 ## Architecture
 
 ### Tech Stack

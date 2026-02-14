@@ -21,7 +21,7 @@ Use bun.js testing for tests.
 
 ### Tech Stack
 - **Runtime/Bundler**: Bun (not Node.js)
-- **Frontend**: React 19 + TypeScript
+- **Frontend**: React 19 + TypeScript only
 - **Styling**: Tailwind CSS v4
 - **Charts**: Recharts
 

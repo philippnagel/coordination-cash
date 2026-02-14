@@ -2,6 +2,7 @@ import { useCallback, useMemo, useState } from "react";
 import { CostDisplay } from "./components/CostDisplay.tsx";
 import { DerivedMetrics } from "./components/DerivedMetrics.tsx";
 import { Layout } from "./components/Layout.tsx";
+import { MonteCarloSimulation } from "./components/MonteCarloSimulation.tsx";
 import { ParameterSliders } from "./components/ParameterSliders.tsx";
 import { ScenarioComparison } from "./components/ScenarioComparison.tsx";
 import { ScopeSelector } from "./components/ScopeSelector.tsx";
@@ -112,6 +113,7 @@ export function App() {
 						onApplyScenario={applyScenario}
 					/>
 					<SensitivityAnalysis inputs={inputs} />
+					<MonteCarloSimulation inputs={inputs} />
 				</div>
 			)}
 			{page === "methodology" && <Methodology />}

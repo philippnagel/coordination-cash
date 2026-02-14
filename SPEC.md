@@ -581,7 +581,7 @@ Display prominently:
 
 ### v1.2 — Advanced Analytics
 - [x] Sensitivity analysis: tornado chart showing parameter impact ranking
-- [ ] Monte Carlo simulation with uncertainty ranges
+- [x] Monte Carlo simulation with uncertainty ranges
 - [ ] API / JSON endpoint for programmatic access that works with the current static page
 
 ### Phase 2

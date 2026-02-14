@@ -10,7 +10,7 @@ export interface SensitivityResult {
 	swing: number;
 }
 
-const PARAM_LABELS: Record<string, string> = {
+export const PARAM_LABELS: Record<string, string> = {
 	implementations: "Implementierungen (I)",
 	"participants.large": "Große Teilnehmer",
 	"participants.medium": "Mittlere Teilnehmer",
@@ -35,7 +35,11 @@ const PARAM_LABELS: Record<string, string> = {
 	"sectorMultipliers.friction": "θ Reibung",
 };
 
-function setNestedValue(obj: ModelInputs, path: string, value: number): void {
+export function setNestedValue(
+	obj: ModelInputs,
+	path: string,
+	value: number,
+): void {
 	const parts = path.split(".");
 	// biome-ignore lint/suspicious/noExplicitAny: generic nested setter
 	let current: any = obj;

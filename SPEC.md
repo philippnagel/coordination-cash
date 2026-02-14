@@ -567,10 +567,8 @@ Display prominently:
 - [x] URL state encoding (base64 JSON, shareable links)
 - [x] Content pages: Methodology, Data Sources, About (German)
 - [x] Responsive layout with sticky header navigation
-- [x] Share button (copy URL to clipboard) — _Layout has icon but needs user feedback (toast)_
-- [ ] Input validation: clamp URL-decoded values to parameter ranges
-- [ ] `[?]` tooltips on parameter labels explaining each variable
-- [ ] `[i]` info button in header linking to Methodology page
+- [x] Share button (copy URL to clipboard)
+- [x] Input validation: clamp URL-decoded values to parameter ranges
 
 ### v1.1 — Polish
 - [x] Export PDF (print stylesheet or html2canvas)
@@ -578,16 +576,13 @@ Display prominently:
 - [ ] Smooth animated transitions on value changes
 - [ ] Social meta tags (Open Graph) for link previews
 - [ ] German number formatting in slider inputs (dots as thousands separator)
+- [ ] `[?]` tooltips on parameter labels explaining each variable
+- [ ] `[i]` info button in header linking to Methodology page
 
 ### v1.2 — Advanced Analytics
 - [ ] Sensitivity analysis: tornado chart showing parameter impact ranking
 - [ ] Monte Carlo simulation with uncertainty ranges
-- [ ] API / JSON endpoint for programmatic access
-
-### Model Design Issues (resolved)
-- [x] κ now mechanically reduces platform cost via `I_eff = κ×5 + (1-κ)×I`. Sync tax still uses raw I
-- [x] P removed as standalone variable — derived as `P_large + P_medium + P_small`
-- [x] θ_friction = 1.4 documented as volume ratio (1.375) + gas-specific error premium
+- [ ] API / JSON endpoint for programmatic access that works with the current static page
 
 ### Phase 2
 - [ ] Time series: model cost evolution 2015-2030

@@ -1,4 +1,4 @@
-import { DEFAULT_INPUTS } from "./defaults.ts";
+import { DEFAULT_INPUTS, PARAMETER_RANGES } from "./defaults.ts";
 import type { ModelInputs } from "./types.ts";
 
 export function encodeConfig(inputs: ModelInputs): string {
@@ -8,10 +8,49 @@ export function encodeConfig(inputs: ModelInputs): string {
 export function decodeConfig(encoded: string): ModelInputs {
 	try {
 		const parsed = JSON.parse(atob(encoded));
-		return mergeDefaults(parsed);
+		return clampToRanges(mergeDefaults(parsed));
 	} catch {
 		return structuredClone(DEFAULT_INPUTS);
 	}
+}
+
+function clamp(value: number, min: number, max: number): number {
+	return Math.min(max, Math.max(min, value));
+}
+
+function clampToRanges(inputs: ModelInputs): ModelInputs {
+	// Validate scope
+	if (inputs.scope !== "strom" && inputs.scope !== "strom_gas") {
+		inputs.scope = DEFAULT_INPUTS.scope;
+	}
+
+	// Clamp all numeric parameters using PARAMETER_RANGES
+	for (const [key, range] of Object.entries(PARAMETER_RANGES)) {
+		const parts = key.split(".");
+		if (parts.length === 1) {
+			const k = parts[0] as keyof ModelInputs;
+			const val = inputs[k];
+			if (typeof val === "number") {
+				(inputs as Record<string, unknown>)[k] = clamp(
+					val,
+					range.min,
+					range.max,
+				);
+			}
+		} else if (parts.length === 2) {
+			const [obj, prop] = parts;
+			const nested = inputs[obj as keyof ModelInputs];
+			if (nested && typeof nested === "object" && prop in nested) {
+				(nested as Record<string, number>)[prop] = clamp(
+					(nested as Record<string, number>)[prop],
+					range.min,
+					range.max,
+				);
+			}
+		}
+	}
+
+	return inputs;
 }
 
 function mergeDefaults(partial: Partial<ModelInputs>): ModelInputs {

@@ -10,7 +10,7 @@
 		"lint": "bunx biome check --write"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.3.14",
+		"@biomejs/biome": "2.3.15",
 		"@tailwindcss/cli": "^4.1.18",
 		"@types/bun": "latest",
 		"@types/react": "^19.2.14",
@@ -21,7 +21,7 @@
 		"typescript": "^5"
 	},
 	"dependencies": {
-		"lucide-react": "^0.563.0",
+		"lucide-react": "^0.564.0",
 		"react": "^19.2.4",
 		"react-dom": "^19.2.4",
 		"recharts": "^3.7.0"

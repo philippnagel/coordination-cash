@@ -79,7 +79,9 @@ describe("runMonteCarloSimulation", () => {
 	test("samples are sorted", () => {
 		const results = runMonteCarloSimulation(DEFAULT_INPUTS, 200);
 		for (let i = 1; i < results.samples.length; i++) {
+			// biome-ignore lint/style/noNonNullAssertion: we know these are defined from the previous test
 			expect(results.samples[i]!).toBeGreaterThanOrEqual(
+				// biome-ignore lint/style/noNonNullAssertion: we know these are defined from the previous test
 				results.samples[i - 1]!,
 			);
 		}

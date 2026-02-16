@@ -14,6 +14,12 @@ import {
 	STROM_ONLY_MULTIPLIERS,
 	STROM_PLUS_GAS_MULTIPLIERS,
 } from "./model/defaults.ts";
+import {
+	deleteSavedScenario,
+	loadSavedScenarios,
+	type SavedScenario,
+	saveScenario,
+} from "./model/storage.ts";
 
 import type { ModelInputs, Scope } from "./model/types.ts";
 import { getInitialInputs, pushConfigToUrl } from "./model/url-state.ts";
@@ -26,6 +32,11 @@ type Page = "calculator" | "methodology" | "data" | "about";
 export function App() {
 	const [inputs, setInputs] = useState<ModelInputs>(getInitialInputs);
 	const [page, setPage] = useState<Page>("calculator");
+	const [savedScenarios, setSavedScenarios] =
+		useState<SavedScenario[]>(loadSavedScenarios);
+	const [activeCustomScenarioId, setActiveCustomScenarioId] = useState<
+		string | null
+	>(null);
 
 	const outputs = useMemo(() => calculateModel(inputs), [inputs]);
 
@@ -36,6 +47,7 @@ export function App() {
 				pushConfigToUrl(next);
 				return next;
 			});
+			setActiveCustomScenarioId(null);
 		},
 		[],
 	);
@@ -96,6 +108,33 @@ export function App() {
 		[updateInputs],
 	);
 
+	const handleSaveScenario = useCallback(
+		(name: string) => {
+			const scenario = saveScenario(name, inputs);
+			setSavedScenarios((prev) => [...prev, scenario]);
+		},
+		[inputs],
+	);
+
+	const handleDeleteScenario = useCallback((id: string) => {
+		deleteSavedScenario(id);
+		setSavedScenarios((prev) => prev.filter((s) => s.id !== id));
+	}, []);
+
+	const applyCustomScenario = useCallback(
+		(id: string, scenarioInputs: ModelInputs, isActive: boolean) => {
+			setInputs(() => {
+				const next = isActive
+					? structuredClone(DEFAULT_INPUTS)
+					: structuredClone(scenarioInputs);
+				pushConfigToUrl(next);
+				return next;
+			});
+			setActiveCustomScenarioId(isActive ? null : id);
+		},
+		[],
+	);
+
 	return (
 		<Layout currentPage={page} onNavigate={setPage}>
 			{page === "calculator" && (
@@ -111,6 +150,11 @@ export function App() {
 					<ScenarioComparison
 						outputs={outputs}
 						onApplyScenario={applyScenario}
+						savedScenarios={savedScenarios}
+						activeCustomScenarioId={activeCustomScenarioId}
+						onSaveScenario={handleSaveScenario}
+						onDeleteScenario={handleDeleteScenario}
+						onApplyCustomScenario={applyCustomScenario}
 					/>
 					<SensitivityAnalysis inputs={inputs} />
 					<MonteCarloSimulation inputs={inputs} />

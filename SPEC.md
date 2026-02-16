@@ -572,7 +572,7 @@ Display prominently:
 
 ### v1.1 — Polish
 - [x] Export PDF (print stylesheet or html2canvas)
-- [ ] Custom scenario saving (localStorage)
+- [x] Custom scenario saving (localStorage)
 - [ ] Smooth animated transitions on value changes
 - [ ] Social meta tags (Open Graph) for link previews
 - [ ] German number formatting in slider inputs (dots as thousands separator)

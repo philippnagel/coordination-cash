@@ -18,7 +18,7 @@ function clamp(value: number, min: number, max: number): number {
 	return Math.min(max, Math.max(min, value));
 }
 
-function clampToRanges(inputs: ModelInputs): ModelInputs {
+export function clampToRanges(inputs: ModelInputs): ModelInputs {
 	// Validate scope
 	if (inputs.scope !== "strom" && inputs.scope !== "strom_gas") {
 		inputs.scope = DEFAULT_INPUTS.scope;
@@ -53,7 +53,7 @@ function clampToRanges(inputs: ModelInputs): ModelInputs {
 	return inputs;
 }
 
-function mergeDefaults(partial: Partial<ModelInputs>): ModelInputs {
+export function mergeDefaults(partial: Partial<ModelInputs>): ModelInputs {
 	return {
 		scope: partial.scope ?? DEFAULT_INPUTS.scope,
 		implementations: partial.implementations ?? DEFAULT_INPUTS.implementations,

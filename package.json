@@ -11,7 +11,7 @@
 		"typecheck": "bunx tsc --noEmit"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.1",
+		"@biomejs/biome": "2.4.2",
 		"@playwright/mcp": "^0.0.68",
 		"@tailwindcss/cli": "^4.1.18",
 		"@types/bun": "latest",
@@ -23,7 +23,7 @@
 		"typescript": "^5"
 	},
 	"dependencies": {
-		"lucide-react": "^0.564.0",
+		"lucide-react": "^0.574.0",
 		"react": "^19.2.4",
 		"react-dom": "^19.2.4",
 		"recharts": "^3.7.0"
